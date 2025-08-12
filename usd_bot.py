@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
 # Lấy token từ biến môi trường
-API_TOKEN = os.getenv("8152476058:AAHiWJ071f2T8nGuSqy25wJkBwbVXO8KHRo")
+API_TOKEN = os.getenv("API_TOKEN")
 
 # Khởi tạo bot và dispatcher
 logging.basicConfig(level=logging.INFO)
@@ -42,3 +42,4 @@ async def send_usd_price(message: types.Message):
 # Khởi chạy bot
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+
