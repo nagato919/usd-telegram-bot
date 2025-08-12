@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
-# 🔐 Thay bằng token bot của bạn
-API_TOKEN = '8152476058:AAHiWJ071f2T8nGuSqy25wJkBwbVXO8KHRo'
+import os
+API_TOKEN = os.getenv("8152476058:AAHiWJ071f2T8nGuSqy25wJkBwbVXO8KHRo")
 
 # ⚙️ Khởi tạo bot và dispatcher
 logging.basicConfig(level=logging.INFO)
@@ -41,3 +41,4 @@ async def send_usd_price(message: types.Message):
 # ▶️ Khởi chạy bot
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+
