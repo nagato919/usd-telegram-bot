@@ -1,18 +1,19 @@
+import os
 import logging
 import requests
 from bs4 import BeautifulSoup
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
-import os
+# Lấy token từ biến môi trường
 API_TOKEN = os.getenv("8152476058:AAHiWJ071f2T8nGuSqy25wJkBwbVXO8KHRo")
 
-# ⚙️ Khởi tạo bot và dispatcher
+# Khởi tạo bot và dispatcher
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-# 📈 Hàm lấy giá USD từ Google Finance
+# Hàm lấy giá USD từ Google Finance
 def get_usd_rate_google():
     try:
         url = "https://www.google.com/finance/quote/USD-VND?hl=vi"
@@ -32,13 +33,12 @@ def get_usd_rate_google():
     except Exception as e:
         return f"⚠️ Lỗi khi lấy dữ liệu: {e}"
 
-# 📲 Xử lý lệnh /giado
+# Lệnh /giado
 @dp.message_handler(commands=['giado'])
 async def send_usd_price(message: types.Message):
     usd_info = get_usd_rate_google()
     await message.reply(usd_info)
 
-# ▶️ Khởi chạy bot
+# Khởi chạy bot
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
-
